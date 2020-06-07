@@ -25,7 +25,7 @@ SECRET_KEY = '$%!4(^i(-1u#l$c9gr8-m)7gq98x^jr9ywxkc+kcjp(s%3dlj2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_login_history'
 ]
 
 MIDDLEWARE = [
@@ -49,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'django_login_history.urls'
+ROOT_URLCONF = 'django_login_history_project.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'django_login_history.wsgi.application'
+WSGI_APPLICATION = 'django_login_history_project.wsgi.application'
 
 
 # Database
@@ -118,3 +119,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+IP_PLACEHOLDER = "172.217.23.195"
