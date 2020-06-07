@@ -16,9 +16,10 @@ Models
 '''
 
 class Login(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     ip = models.CharField(max_length=15)
     user_agent = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
 
     country = models.CharField(max_length=50)
     region = models.CharField(max_length=50)
