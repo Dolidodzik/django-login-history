@@ -5,6 +5,27 @@ import json
 import requests
 import ipaddress
 from django.conf import settings as conf_settings
+from django.contrib.auth.models import User
+
+
+
+'''
+
+Models
+
+'''
+
+class Login(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    ip = models.CharField(max_length=15)
+    user_agent = models.TextField()
+
+    country = models.CharField(max_length=50)
+    region = models.CharField(max_length=50)
+    city = models.CharField(max_length=50)
+    lon = models.FloatField(default=0.0)
+    lat = models.FloatField(default=0.0)
+
 
 
 def get_client_ip(request):
@@ -28,12 +49,10 @@ def get_location_data__from_ip(ip):
     else:
         pass
 
-    print(ip)
     url = "http://ip-api.com/json/"+ip
 
-    locationInfo = requests.get(url)
-    print("locationInfo below:")
-    print(locationInfo.text)
+    locationInfo = requests.get(url).text
+    locationInfo = json.loads(locationInfo)
     return locationInfo
 
 
@@ -45,18 +64,17 @@ def post_login(sender, user, request, **kwargs):
     ip = get_client_ip(request)
     locationInfo = get_location_data__from_ip(ip)
 
-    print(ip)
-    print(request.META['HTTP_USER_AGENT'])
+    print(type(locationInfo))
+    print(locationInfo["country"])
 
-    return 0
-
-
-
-'''
-
-Models
-
-'''
-
-class Login(models.Model):
-    ip = models.CharField(max_length=15)
+    login = Login.objects.create(
+        owner=user,
+        ip=ip,
+        user_agent=request.META['HTTP_USER_AGENT'],
+        country=locationInfo["country"],
+        region=locationInfo["region"],
+        city=locationInfo["city"],
+        lon=locationInfo["lon"],
+        lat=locationInfo["lat"],
+    )
+    print(login)
