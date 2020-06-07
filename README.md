@@ -10,8 +10,8 @@ It's easy to use, plug-in django app that once included, stores logins history (
 
 ```
 INSTALLED_APPS = [  
-&nbsp;&nbsp;&nbsp;&nbsp;  'other apps',  
-&nbsp;&nbsp;&nbsp;&nbsp;  'django_login_history'  
+    '...',  
+    'django_login_history'  
 ]
 ```
 
