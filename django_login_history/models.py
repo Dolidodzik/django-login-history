@@ -72,7 +72,7 @@ def post_login(sender, user, request, **kwargs):
     print(locationInfo["country"])
 
     login = Login.objects.create(
-        owner=user,
+        user=user,
         ip=ip,
         user_agent=request.META['HTTP_USER_AGENT'],
         country=locationInfo["country"],
