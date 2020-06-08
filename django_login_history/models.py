@@ -5,7 +5,7 @@ import json
 import requests
 import ipaddress
 from django.conf import settings as conf_settings
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
 
 
@@ -16,7 +16,7 @@ Models
 '''
 
 class Login(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     ip = models.CharField(max_length=15)
     user_agent = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
@@ -55,8 +55,7 @@ def get_location_data__from_ip(ip):
 
     url = "http://ip-api.com/json/"+ip
 
-    locationInfo = requests.get(url).text
-    locationInfo = json.loads(locationInfo)
+    locationInfo = requests.get(url).json()
     return locationInfo
 
 
