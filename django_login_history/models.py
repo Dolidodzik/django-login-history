@@ -26,6 +26,9 @@ class Login(models.Model):
     city = models.CharField(max_length=50)
     lon = models.FloatField(default=0.0)
     lat = models.FloatField(default=0.0)
+    
+    def __str__(self):
+        return self.user.username + " (" + self.ip + ") at " + str(self.date)
 
 
 
