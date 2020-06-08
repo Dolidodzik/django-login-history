@@ -27,9 +27,6 @@ class Login(models.Model):
     lon = models.FloatField(default=0.0)
     lat = models.FloatField(default=0.0)
 
-    def __str__(self):
-        return self.user.username + " (" + self.ip + ") at " + str(self.date)
-
 
 
 def get_client_ip(request):
@@ -44,8 +41,8 @@ def get_client_ip(request):
 def get_location_data__from_ip(ip):
 
     # if ip is local (so it's impossible to find lat/long coords and location) project will use random google ip as placeholder]
-    print(ipaddress.ip_address(ip).is_private)
-    if ipaddress.ip_address(ip).is_private:
+    print(ipaddress.ip_address('192.168.0.1').is_private)
+    if ipaddress.ip_address('192.168.0.1').is_private:
         if hasattr(conf_settings, 'IP_PLACEHOLDER'):
             ip = conf_settings.IP_PLACEHOLDER
         else:
@@ -67,6 +64,9 @@ def post_login(sender, user, request, **kwargs):
 
     ip = get_client_ip(request)
     locationInfo = get_location_data__from_ip(ip)
+
+    print(type(locationInfo))
+    print(locationInfo["country"])
 
     login = Login.objects.create(
         user=user,

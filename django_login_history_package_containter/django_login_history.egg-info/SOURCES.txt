@@ -1,0 +1,16 @@
+setup.cfg
+setup.py
+django_login_history/__init__.py
+django_login_history/admin.py
+django_login_history/apps.py
+django_login_history/models.py
+django_login_history/setup.py
+django_login_history/tests.py
+django_login_history/views.py
+django_login_history.egg-info/PKG-INFO
+django_login_history.egg-info/SOURCES.txt
+django_login_history.egg-info/dependency_links.txt
+django_login_history.egg-info/top_level.txt
+django_login_history/migrations/0001_initial.py
+django_login_history/migrations/0002_auto_20200607_0950.py
+django_login_history/migrations/__init__.py
