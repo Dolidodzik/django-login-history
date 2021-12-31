@@ -1,4 +1,4 @@
-# django-login-history
+### django-login-history
 
 It's easy to use, plug-in django app that once included, stores logins history (with device data, like IP, user-agent, location etc.) of all users. Here's the short demo:
 
