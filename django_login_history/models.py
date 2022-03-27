@@ -43,8 +43,7 @@ def get_client_ip(request):
 
 def get_location_data__from_ip(ip):
 
-    # if ip is local (so it's impossible to find lat/long coords and location) project will use random google ip as placeholder]
-    print(ipaddress.ip_address(ip).is_private)
+    # if ip is local (so it's impossible to find lat/long coords and location) project will use random google ip as placeholder]    
     if ipaddress.ip_address(ip).is_private:
         if hasattr(conf_settings, 'IP_PLACEHOLDER'):
             ip = conf_settings.IP_PLACEHOLDER
@@ -76,5 +75,4 @@ def post_login(sender, user, request, **kwargs):
         city=locationInfo["city"],
         lon=locationInfo["lon"],
         lat=locationInfo["lat"],
-    )
-    print(login)
+    )    
