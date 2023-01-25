@@ -5,7 +5,7 @@ It's easy to use, plug-in django app that once included, stores logins history (
 
 # Setup
 
-1. Install this app using ``` pip install django-login-history ```
+1. Install this app using ``` pip install requests django-login-history ```
 2. Include this app in your ```settings.py```  ```INSTALLED_APPS``` list:
 
 ```
@@ -14,6 +14,7 @@ INSTALLED_APPS = [
     'django_login_history'  
 ]
 ```
+3. Run migrations ``` python manage.py migrate ```
 
 That's it! You can login to admin panel and check how data is stored!
 
